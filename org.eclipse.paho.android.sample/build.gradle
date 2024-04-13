@@ -2,10 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId rootProject.ext.sampleArchivesBaseName
+        applicationId 'org.eclipse.paho.android.sample'
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 1
@@ -43,12 +42,10 @@ dependencies {
 }
 
 task publishAPK(type: Copy) {
-    from file("${project.buildDir}/outputs/apk/" + rootProject.ext.sampleArchivesBaseName + "-debug.apk");
-    into '/shared/technology/paho/Android/' + rootProject.ext.sampleVersion + '/debug/';
+    from fileTree(dir: "${project.buildDir}/outputs/apk/", includes: ["*-debug.apk"]);
+    into '/shared/technology/paho/Android/' + version + '/debug/';
 }
 
-
-configurations.compile.exclude module: 'org.eclipse.paho.client.mqttv3'
-task debug << {
+task debug doLast {
     configurations.compile.each { println it}
 }
