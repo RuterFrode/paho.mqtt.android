@@ -1,1 +1,3 @@
 include ':org.eclipse.paho.android.service'
+include ':example'
+include ':example2'
