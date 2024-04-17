@@ -75,6 +75,7 @@ class AlarmPingSender implements MqttPingSender {
 
 		int flags = PendingIntent.FLAG_UPDATE_CURRENT;
 		if(Build.VERSION.SDK_INT >= 31) flags |= PendingIntent.FLAG_IMMUTABLE;
+		if(Build.VERSION.SDK_INT >= 33) flags |= android.content.Context.RECEIVER_NOT_EXPORTED;
 		pendingIntent = PendingIntent.getBroadcast(service, 0, new Intent(action), flags);
 
 		schedule(comms.getKeepAlive());
