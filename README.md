@@ -1,4 +1,20 @@
 # Eclipse Paho Android Service
+
+## Fork Info
+This is a fork of a fork of Paho in order to support Android SDK 33 and 34 
+
+- The first [fork from wuzhengu](https://github.com/wuzhengu/paho.mqtt.android) got the gradle version up to 6.x and fixed some Intent stuff.
+- My fork got gradle to 7.x and fixed more intent stuff for SDK 34, namely flag `RECEIVER_NOT_EXPORTED` which is required in order to register a broadcast receiver.
+
+To use this in a client that has `targetSdk 33` or higher you need to set the following permission in your manifest:
+
+```
+<uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+```
+
+You do not need to ask for that permission runtime, from my experience.
+
+## Introduction
 [![Build Status](https://travis-ci.org/eclipse/paho.mqtt.android.svg?branch=master)](https://travis-ci.org/eclipse/paho.mqtt.android)
 
 The Paho Android Service is an MQTT client library written in Java for developing applications on Android.
