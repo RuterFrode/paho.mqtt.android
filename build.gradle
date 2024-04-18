@@ -12,7 +12,7 @@ buildscript {
 
 ext{
 
-    compileSdkVersion = 24
+    compileSdkVersion = 34
 
     clientVersion = '1.1.0'
 
